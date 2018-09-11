@@ -6,7 +6,7 @@
     输入要扔出去几个球
     理论上这个分布是个正态分布
  */
-package unit7;
+package unit7_8;
 
 import java.util.Arrays;
 import java.util.Scanner;

@@ -4,7 +4,7 @@
 3.找出最大元素
 4.找出第一个最大元素的下标
  */
-package unit7;
+package unit7_8;
 
 public class MakeArray {
     public static void main(String[] agrs) {

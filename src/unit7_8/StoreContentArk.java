@@ -9,7 +9,7 @@
     处理是指（如果关闭就打开，如果打开就关闭）
 那么等着100个学生都走完了，柜子的状态是啥样的
  */
-package unit7;
+package unit7_8;
 
 import java.util.Arrays;
 

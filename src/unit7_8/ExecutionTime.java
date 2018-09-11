@@ -5,7 +5,7 @@
     先排序，然后再使用二分查找所用的时间
 时间差使用调用两次System.currentTimeMillis();来计算
  */
-package unit7;
+package unit7_8;
 
 import java.util.Arrays;
 

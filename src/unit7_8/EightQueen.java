@@ -4,7 +4,7 @@
     任何两个皇后都不能互相攻击
         没有两个皇后在同一行，同一列或者同一对角
  */
-package unit7;
+package unit7_8;
 
 import java.util.Arrays;
 

@@ -7,7 +7,7 @@
 注意：二分法查找必须使数组有序排列
 如果无序，则可以使用Array.sort()静态方法处理
  */
-package unit7;
+package unit7_8;
 
 import java.util.Arrays;
 

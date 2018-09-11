@@ -7,7 +7,7 @@
     声明一个数组来存储单词
     String[] words = {"write", "that", ...};
  */
-package unit7;
+package unit7_8;
 
 import java.util.Arrays;
 import java.util.Scanner;

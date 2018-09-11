@@ -5,7 +5,7 @@
 接下来，在剩下的数中找到最小的数，将它和第二个元素交换，
 以此类推，直到数组剩一个元素为止
  */
-package unit7;
+package unit7_8;
 
 import java.util.Arrays;
 
