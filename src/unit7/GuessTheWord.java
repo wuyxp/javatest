@@ -27,7 +27,7 @@ public class GuessTheWord {
             int pcIndex = diffArrays(s, pc, c);
             if (pcIndex != -1) {
                 generatorPassword(pc, pcIndex, c);
-                System.out.println("猜对了一个，请继续："+Arrays.toString(pc));
+                System.out.println("猜对了一个，请继续：" + Arrays.toString(pc));
                 if (Arrays.equals(pc, s)) {
                     System.out.println("输入完全正确，输错的次数是：" + count);
                     isDone = true;
