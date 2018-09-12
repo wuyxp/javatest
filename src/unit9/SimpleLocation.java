@@ -50,6 +50,7 @@ class Location {
     Location() {
         this.row = 3;
         this.column = 4;
+        this.matrix = new double[this.row][this.column];
     }
 
     private void setMaxValues() {
