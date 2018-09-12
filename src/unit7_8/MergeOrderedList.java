@@ -15,19 +15,19 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class MergeOrderedList {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println("请输入一个序列整形数组，并且第一位是数组的长度：");
         Scanner scanner = new Scanner(System.in);
         int arr1Length = scanner.nextInt();
         int[] arr1 = new int[arr1Length];
-        for(int i=0;i<arr1Length;i++){
+        for (int i = 0; i < arr1Length; i++) {
             arr1[i] = scanner.nextInt();
         }
 
         System.out.println("请再输入一个序列整形数组，并且第一位是数组的长度：");
         int arr2Length = scanner.nextInt();
         int[] arr2 = new int[arr2Length];
-        for(int i=0;i<arr2Length;i++){
+        for (int i = 0; i < arr2Length; i++) {
             arr2[i] = scanner.nextInt();
         }
 
@@ -39,20 +39,21 @@ public class MergeOrderedList {
         System.out.println("两个数组排序后的结果是：");
         System.out.println(Arrays.toString(result));
     }
-    public static int[] sort(int[] arr1, int[] arr2){
-        int length = arr1.length+ arr2.length;
+
+    public static int[] sort(int[] arr1, int[] arr2) {
+        int length = arr1.length + arr2.length;
         int[] result = new int[length];
         int arr1Index = 0;
         int arr2Index = 0;
-        for(int i =0 ;i<length;i++){
-            if(arr1Index >= arr1.length){
+        for (int i = 0; i < length; i++) {
+            if (arr1Index >= arr1.length) {
                 result[i] = arr2[arr2Index++];
-            }else if(arr2Index >= arr2.length){
+            } else if (arr2Index >= arr2.length) {
                 result[i] = arr1[arr1Index++];
-            }else{
-                if(arr1[arr1Index] < arr2[arr2Index]){
+            } else {
+                if (arr1[arr1Index] < arr2[arr2Index]) {
                     result[i] = arr1[arr1Index++];
-                }else{
+                } else {
                     result[i] = arr2[arr2Index++];
                 }
             }
