@@ -3,7 +3,7 @@ package com.sudoku;
 public class TestSudoku {
     public static void main(String[] args) {
         Sudoku sudoku = new Sudoku();
-        int[][] matrix = sudoku.generatorMatrix("test");
+        int[][] matrix = sudoku.generatorMatrix();
 
         System.out.println("所有矩阵行是：");
         Util.printMatrix(matrix);

@@ -10,9 +10,10 @@ public class Sudoku {
 
     // 生成矩阵，当有参数时：则输入测试矩阵
     int[][] generatorMatrix() {
-        int[][] gMatrix = new int[LENGTH][LENGTH];
-
-        return gMatrix;
+        for(int i=0;i<LENGTH;i++){
+            this.generator(i,0);
+        }
+        return this.getMatrix();
     }
 
     int[][] generatorMatrix(String s) {
@@ -32,8 +33,21 @@ public class Sudoku {
         return matrix;
     }
 
-    private boolean generatorRow() {
+    private boolean generator(int value, int rowIndex ) {
+        if(rowIndex>= LENGTH) return true;
         // 没有完成生成操作
+        int[] arrRow = Util.shuffle(Util.generatorRow());
+        for(int i=0;i<LENGTH ;i++){
+            int colIndex = arrRow[i];
+            if(!Util.checkMatrix(this.matrix, rowIndex, colIndex, value)){
+                continue;
+            }
+            this.matrix[rowIndex][colIndex] = value;
+            if(!this.generator(value, rowIndex+1)){
+                this.matrix[rowIndex][colIndex] = 0;
+            }
+            return true;
+        }
         return false;
     }
 

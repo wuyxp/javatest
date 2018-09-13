@@ -14,34 +14,51 @@ public class Util {
         return true;
     }
 
-    static boolean checkMatrixRow(int[][] matrix, int rowIndex, int value) {
-        int[] row = matrix[rowIndex];
-        return checkRow(row, value);
+    static boolean checkMatrixRow(int[][] matrix, int rowIndex, int colIndex, int value) {
+        int[][] resultMatrix = Util.getAllRow(matrix);
+        return checkRow(resultMatrix[rowIndex], value);
     }
 
-    static boolean checkMatrixCol(int[][] matrix, int colIndex, int value) {
-        int[] col = new int[LENGTH];
-        for (int i = 0; i < matrix.length; i++) {
-            col[i] = matrix[i][colIndex];
+    static boolean checkMatrixCol(int[][] matrix,int rowIndex, int colIndex, int value) {
+        int[][] resultMatrix = Util.getAllCol(matrix);
+        return checkRow(resultMatrix[colIndex], value);
+    }
+
+    static boolean checkMatrixCell(int[][] matrix, int rowIndex, int colIndex, int value) {
+        int[][] resultMatrix = Util.getAllCell(matrix);
+        int cellIndex = (rowIndex / 3) *3+ (colIndex/3) *3;
+        return checkRow(resultMatrix[cellIndex], value);
+    }
+
+    // 检查九宫格是否合格
+    static boolean checkMatrix(int[][] matrix, int rowIndex, int colIndex, int value) {
+        return (
+                checkMatrixRow(matrix, rowIndex, colIndex, value) &&
+                        checkMatrixCol(matrix, rowIndex, colIndex, value) &&
+                        checkMatrixCell(matrix, rowIndex, colIndex, value)
+        );
+    }
+    // 生成一行1-9的数组
+    static int[] generatorRow() {
+        int[] arr = new int[LENGTH];
+        for (int i = 0; i < LENGTH; i++) {
+            arr[i] = i;
         }
-        return checkRow(col, value);
+        return arr;
     }
 
-    static boolean checkMatrixCell(int[][] matrix, int cellIndex, int value) {
-        int[] cell = new int[LENGTH];
-        int rowTmp = (cellIndex / 3);
-        int colTmp = cellIndex % 3;
-        int cellTmpIndex = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if ((i / 3) == rowTmp && (j / 3) == colTmp) {
-                    cell[cellTmpIndex++] = matrix[i][j];
-                }
-            }
+    // 洗牌算法
+    static int[] shuffle(int[] arr) {
+        int length = arr.length;
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            int index = (int) (Math.random() * 9);
+            int tmp = arr[i];
+            arr[i] = arr[index];
+            arr[index] = tmp;
         }
-        return checkRow(cell, value);
+        return result;
     }
-
 
     // 获取矩阵行
     static int[][] getAllRow(int[][] matrix) {
