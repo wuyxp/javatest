@@ -19,25 +19,39 @@ public class Util {
         return checkRow(resultMatrix[rowIndex], value);
     }
 
-    static boolean checkMatrixCol(int[][] matrix,int rowIndex, int colIndex, int value) {
+    static boolean checkMatrixCol(int[][] matrix, int rowIndex, int colIndex, int value) {
         int[][] resultMatrix = Util.getAllCol(matrix);
         return checkRow(resultMatrix[colIndex], value);
     }
 
     static boolean checkMatrixCell(int[][] matrix, int rowIndex, int colIndex, int value) {
         int[][] resultMatrix = Util.getAllCell(matrix);
-        int cellIndex = (rowIndex / 3) *3+ (colIndex/3) *3;
+        int cellIndex = (rowIndex / 3) * 3 + (colIndex / 3);
         return checkRow(resultMatrix[cellIndex], value);
     }
 
     // 检查九宫格是否合格
     static boolean checkMatrix(int[][] matrix, int rowIndex, int colIndex, int value) {
         return (
-                checkMatrixRow(matrix, rowIndex, colIndex, value) &&
+                matrix[rowIndex][colIndex] == 0 &&
+                        checkMatrixRow(matrix, rowIndex, colIndex, value) &&
                         checkMatrixCol(matrix, rowIndex, colIndex, value) &&
                         checkMatrixCell(matrix, rowIndex, colIndex, value)
         );
     }
+
+    // 检查九宫格是否生成完毕
+    static boolean isDoneMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     // 生成一行1-9的数组
     static int[] generatorRow() {
         int[] arr = new int[LENGTH];
@@ -50,12 +64,12 @@ public class Util {
     // 洗牌算法
     static int[] shuffle(int[] arr) {
         int length = arr.length;
-        int[] result = new int[length];
+        int[] result = arr.clone();
         for (int i = 0; i < length; i++) {
             int index = (int) (Math.random() * 9);
-            int tmp = arr[i];
-            arr[i] = arr[index];
-            arr[index] = tmp;
+            int tmp = result[i];
+            result[i] = result[index];
+            result[index] = tmp;
         }
         return result;
     }
@@ -89,7 +103,7 @@ public class Util {
         int[][] result = new int[LENGTH][LENGTH];
         for (int i = 0; i < LENGTH; i++) {
             for (int j = 0; j < LENGTH; j++) {
-                result[i][j] = matrix[(i / 3) * 3][(j % 3) + (i % 3) * 3];
+                result[i][j] = matrix[(i / 3) * 3 + (j / 3)][(j % 3) + (i % 3) * 3];
             }
         }
         return result;

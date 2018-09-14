@@ -10,8 +10,11 @@ public class Sudoku {
 
     // 生成矩阵，当有参数时：则输入测试矩阵
     int[][] generatorMatrix() {
-        for(int i=0;i<LENGTH;i++){
-            this.generator(i,0);
+        while (!Util.isDoneMatrix(this.matrix)) {
+            matrix = new int[LENGTH][LENGTH];
+            for (int i = 0; i < LENGTH; i++) {
+                this.generator(i + 1, 0);
+            }
         }
         return this.getMatrix();
     }
@@ -21,7 +24,7 @@ public class Sudoku {
             int[][] testMatrix = new int[LENGTH][LENGTH];
             for (int i = 0; i < LENGTH; i++) {
                 for (int j = 0; j < LENGTH; j++) {
-                    testMatrix[i][j] = j;
+                    testMatrix[i][j] = i + j;
                 }
             }
             return testMatrix;
@@ -33,17 +36,17 @@ public class Sudoku {
         return matrix;
     }
 
-    private boolean generator(int value, int rowIndex ) {
-        if(rowIndex>= LENGTH) return true;
+    private boolean generator(int value, int rowIndex) {
+        if (rowIndex >= LENGTH) return true;
         // 没有完成生成操作
         int[] arrRow = Util.shuffle(Util.generatorRow());
-        for(int i=0;i<LENGTH ;i++){
+        for (int i = 0; i < LENGTH; i++) {
             int colIndex = arrRow[i];
-            if(!Util.checkMatrix(this.matrix, rowIndex, colIndex, value)){
+            if (!Util.checkMatrix(this.matrix, rowIndex, colIndex, value)) {
                 continue;
             }
             this.matrix[rowIndex][colIndex] = value;
-            if(!this.generator(value, rowIndex+1)){
+            if (!this.generator(value, rowIndex + 1)) {
                 this.matrix[rowIndex][colIndex] = 0;
             }
             return true;
