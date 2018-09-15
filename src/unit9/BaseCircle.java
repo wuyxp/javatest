@@ -19,7 +19,7 @@ public class BaseCircle {
         return 2 * Math.PI * radius;
     }
 
-    public void setRadius(double r) {
+    public void setRadius(double r) throws Exception {
         radius = r;
     }
 }
