@@ -8,7 +8,7 @@ public class TestCircleWithException {
         CircleWithException circleWithException = new CircleWithException();
         try{
             circleWithException.setRadius(-1);
-        }catch (IllegalAccessException lex){
+        }catch (InvalidRadiusException lex){
             System.out.println(lex);
             lex.printStackTrace(); // 这个是异步的？
         }
