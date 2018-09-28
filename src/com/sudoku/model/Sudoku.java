@@ -1,4 +1,4 @@
-package com.sudoku;
+package com.sudoku.model;
 
 public class Sudoku {
     private final static int LENGTH = 9;

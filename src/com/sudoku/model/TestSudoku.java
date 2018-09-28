@@ -1,4 +1,4 @@
-package com.sudoku;
+package com.sudoku.model;
 
 public class TestSudoku {
     public static void main(String[] args) {

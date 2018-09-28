@@ -1,4 +1,4 @@
-package com.sudoku;
+package com.sudoku.model;
 
 import java.util.Arrays;
 
