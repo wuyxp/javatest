@@ -4,12 +4,12 @@ public class Sudoku {
     private final static int LENGTH = 9;
     private int[][] matrix = new int[LENGTH][LENGTH];
 
-    Sudoku() {
+    public Sudoku() {
 
     }
 
     // 生成矩阵，当有参数时：则输入测试矩阵
-    int[][] generatorMatrix() {
+    public int[][] generatorMatrix() {
         while (!Util.isDoneMatrix(this.matrix)) {
             matrix = new int[LENGTH][LENGTH];
             for (int i = 0; i < LENGTH; i++) {
@@ -19,7 +19,7 @@ public class Sudoku {
         return this.getMatrix();
     }
 
-    int[][] generatorMatrix(String s) {
+    public int[][] generatorMatrix(String s) {
         if (s.equalsIgnoreCase("test")) {
             int[][] testMatrix = new int[LENGTH][LENGTH];
             for (int i = 0; i < LENGTH; i++) {
